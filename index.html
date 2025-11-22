@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зовнішній ліфт — фасад</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">Зовнішній ліфт — Демонстрація</div>
+  <div class="ref">Макет фасаду + зовнішня шахта</div>
+</header>
+
+<main class="layout">
+
+  <section class="facade">
+
+    <div class="building">
+        <div class="lamp"></div>
+        <div class="balcony" style="top:60px;"></div>
+        <div class="balcony" style="top:180px;"></div>
+        <div class="balcony" style="top:300px;"></div>
+        <div class="ac" style="top:120px;"></div>
+        <div class="ac" style="top:340px;"></div>
+        <div class="graffiti"></div>
+      <div class="windows">
+        <div class="col">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="external-lift">
+      <div class="shaft" id="shaft">
+
+        <div class="elevator" id="elevator">
+          <div class="glass">
+            <div class="cab-number" id="indicator">0</div>
+          </div>
+          <div class="door left"></div>
+          <div class="door right"></div>
+        </div>
+
+        <ol class="levels">
+          <li>9</li>
+          <li>8</li>
+          <li>7</li>
+          <li>6</li>
+          <li>5</li>
+          <li>4</li>
+          <li>3</li>
+          <li>2</li>
+          <li>1</li>
+          <li>0</li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+  <aside class="controls">
+
+    <h2>Виклик ліфта</h2>
+    <div class="buttons">
+      <button data-floor="9">9</button>
+      <button data-floor="8">8</button>
+      <button data-floor="7">7</button>
+      <button data-floor="6">6</button>
+      <button data-floor="5">5</button>
+      <button data-floor="4">4</button>
+      <button data-floor="3">3</button>
+      <button data-floor="2">2</button>
+      <button data-floor="1">1</button>
+      <button data-floor="0">0</button>
+    </div>
+
+    <div class="status">
+      <div>Поточний поверх: <span id="status-floor">0</span></div>
+      <div>Стан: <span id="status-state">idle</span></div>
+    </div>
+
+    <div class="notes">
+      <small>Натисни будь-який поверх, щоб викликати ліфт.</small>
+    </div>
+
+  </aside>
+
+</main>
+
+<footer class="footer">
+  Зроблено ❤️ Спеціально для тебе
+</footer>
+
+<script src="js/elevator.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
