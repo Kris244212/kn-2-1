@@ -74,4 +74,6 @@ def status():
 threading.Thread(target=move_elevator, daemon=True).start()
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
