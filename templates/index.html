@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Модель роботи ліфта (Flask Simulation)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Симуляція роботи ліфта у багатоповерхівці</h1>
+        <div id="status-panel">
+            Поверх: <span id="current-floor">1</span> | 
+            Стан: <span id="current-direction">Idle</span> |
+            Черга: <span id="current-queue">[]</span>
+        </div>
+    </header>
+
+    <main class="simulation-container">
+        
+        <div class="building">
+            <div class="shaft">
+                <div class="elevator" id="elevator"></div>
+            </div>
+            
+            <div class="floors-display">
+                {% for i in range(1, 11) %}
+                    <div class="floor" id="floor-{{ i }}">{{ i }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <h2>Кнопки виклику</h2>
+            <div class="floor-buttons">
+                {% for i in range(1, 11) %}
+                    <button class="call-btn" data-floor="{{ i }}" onclick="callElevator({{ i }})">{{ i }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
