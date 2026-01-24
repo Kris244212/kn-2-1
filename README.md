@@ -1,79 +1,108 @@
-# 🛗 Elevator Simulator - Flask Web Application
+1. Анти-патерн God Object
 
-Симуляція роботи ліфта у багатоповерхівці з інтерактивним веб-інтерфейсом.
+God Object — це анти-патерн, за якого один клас:
 
-## 📋 Функціонал
+знає занадто багато про систему;
 
-- ✅ Симуляція руху ліфта між 10 поверхами
-- ✅ Інтерактивні кнопки виклику
-- ✅ Real-time статус панель (поточний поверх, стан, черга)
-- ✅ Плавна анімація руху кабіни
-- ✅ Алгоритм оптимізації черги запитів
+виконує занадто багато різних відповідальностей;
 
-## 🚀 Швидкий старт
+керує логікою, даними, валідацією, збереженням, логуванням тощо;
 
-### Локально (на своєму комп'ютері)
+має велику кількість методів і залежностей;
 
-```bash
-# 1. Клонування репозиторію
-git clone https://github.com/Kris244212/kn-2-1.git
-cd kn-2-1
+тісно пов’язаний з іншими частинами системи (high coupling).
 
-# 2. Встановлення залежностей
-pip install -r requirements.txt
+Основні проблеми:
 
-# 3. Запуск сервера
-python app.py
+порушення SRP (Single Responsibility Principle);
 
-# 4. Відкрийте браузер
-# http://localhost:5000
-```
+складність тестування;
 
-### На Render (безкоштовно, 24/7)
+важко підтримувати та розширювати;
 
-1. Перейдіть на https://render.com
-2. Зареєструйтеся через GitHub
-3. Натисніть "New Web Service"
-4. Підключіть репозиторій: `https://github.com/Kris244212/kn-2-1`
-5. Натисніть "Deploy"
-6. Отримаєте посилання типу: `https://elevator-simulator-xxxxx.onrender.com`
+будь-яка зміна може зламати багато функціоналу.
 
-## 📁 Структура проекту
+2. Приклад класу, який порушує SRP
+public class UserManager {
 
-```
-kn-2-1/
-├── app.py                 # Flask сервер та логіка ліфта
-├── requirements.txt       # Залежності Python
-├── render.yaml           # Конфігурація для Render
-├── README.md             # Цей файл
-├── templates/
-│   └── index.html        # HTML інтерфейс
-└── static/
-    ├── style.css         # Стилі (CSS)
-    └── script.js         # JavaScript логіка клієнта
-```
+    public void createUser(String name, String email) {
+        // валідація
+        if (name == null || email == null) {
+            throw new IllegalArgumentException("Invalid data");
+        }
 
-## 🛠️ Технологічний стек
+        // збереження в БД
+        System.out.println("Saving user to database");
 
-- **Backend:** Python 3.11, Flask
-- **Frontend:** HTML, CSS, JavaScript
-- **Розгортання:** Render.com
+        // логування
+        System.out.println("User created: " + name);
 
-## 📝 API Маршрути
+        // відправка email
+        System.out.println("Sending welcome email to " + email);
+    }
+}
 
-| Маршрут | Метод | Опис |
-|---------|-------|------|
-| `/` | GET | Головна сторінка |
-| `/call` | POST | Виклик ліфта на поверх |
-| `/status` | GET | Отримати поточний стан ліфта |
+Чому це порушує SRP?
 
-## 👨‍💻 Автор
+Клас UserManager має кілька причин для зміни:
 
-**Крістіна** - Курсова робота
+зміна правил валідації;
 
-## 📚 Для викладача
+зміна способу збереження даних;
 
-- **GitHub:** https://github.com/Kris244212/kn-2-1
-- **Весь код видно** на GitHub без запуску сервера
-- **Локально:** Слідуйте інструкціям вище для повної демонстрації
-- **Онлайн:** Розгорніть на Render для постійного доступу
+зміна логування;
+
+зміна логіки відправки email.
+
+Тобто він відповідає не за одну, а за чотири різні речі.
+
+3. Рефакторинг для дотримання SRP
+
+Розділимо відповідальності на окремі класи.
+
+Валідація
+public class UserValidator {
+    public void validate(String name, String email) {
+        if (name == null || email == null) {
+            throw new IllegalArgumentException("Invalid data");
+        }
+    }
+}
+
+Репозиторій
+public class UserRepository {
+    public void save(String name, String email) {
+        System.out.println("Saving user to database");
+    }
+}
+
+Email сервіс
+public class EmailService {
+    public void sendWelcomeEmail(String email) {
+        System.out.println("Sending welcome email to " + email);
+    }
+}
+
+Оновлений UserManager
+public class UserManager {
+
+    private final UserValidator validator = new UserValidator();
+    private final UserRepository repository = new UserRepository();
+    private final EmailService emailService = new EmailService();
+
+    public void createUser(String name, String email) {
+        validator.validate(name, email);
+        repository.save(name, email);
+        emailService.sendWelcomeEmail(email);
+    }
+}
+
+Переваги рефакторингу:
+
+кожен клас має одну відповідальність;
+
+легше тестувати;
+
+легше змінювати або розширювати систему;
+
+код читабельніший та гнучкіший.
