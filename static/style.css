@@ -1,0 +1,128 @@
+/* static/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#status-panel {
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.simulation-container {
+    display: flex;
+    gap: 40px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Шахта та поверхи --- */
+.building {
+    display: flex;
+    height: 500px; /* 10 поверхів * 50px/поверх */
+    position: relative;
+    border-left: 2px solid #333;
+    border-right: 2px solid #333;
+}
+
+.shaft {
+    width: 80px;
+    height: 100%;
+    position: relative;
+    background-color: #eee;
+}
+
+.floors-display {
+    display: flex;
+    flex-direction: column-reverse; /* Щоб 10 поверх був вгорі */
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 10px;
+    width: 40px;
+}
+
+.floor {
+    height: 50px; /* Висота поверху */
+    line-height: 50px;
+    text-align: right;
+    font-weight: bold;
+    border-bottom: 1px dashed #aaa;
+}
+.floor:last-child {
+    border-bottom: none;
+}
+
+/* --- Кабіна ліфта --- */
+.elevator {
+    width: 76px;
+    height: 50px;
+    background-color: #5cb85c;
+    border: 2px solid #4cae4c;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    transition: bottom 1s linear; /* Плавна анімація руху */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* --- Панель керування --- */
+.control-panel {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.floor-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.call-btn {
+    padding: 10px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.call-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Стиль для натиснутої/очікуваної кнопки */
+.call-btn.waiting {
+    background-color: #ffc107;
+    color: #333;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
