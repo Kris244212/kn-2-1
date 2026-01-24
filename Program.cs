@@ -10,7 +10,7 @@ namespace lab21
         static void Main()
         {
             Console.WriteLine("Введіть тип доставки (Standard, Express, International, Night):");
-            string type = Console.ReadLine();
+            string? type = Console.ReadLine();
 
             Console.WriteLine("Введіть відстань (км):");
             decimal distance = decimal.Parse(Console.ReadLine() ?? "0");
@@ -20,7 +20,7 @@ namespace lab21
 
             try
             {
-                IShippingStrategy strategy = ShippingStrategyFactory.CreateStrategy(type);
+                IShippingStrategy strategy = ShippingStrategyFactory.CreateStrategy(type ?? "Standard");
                 DeliveryService service = new DeliveryService();
                 decimal cost = service.CalculateDeliveryCost(distance, weight, strategy);
 
