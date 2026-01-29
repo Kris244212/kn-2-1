@@ -1,20 +1,10 @@
 namespace lab22.Shapes
 {
-    // Похідний клас, який порушує LSP
-    public class Square : Rectangle
+    // Square реалізує IShape безпосередньо (правильна модель)
+    public class Square : IShape
     {
-        private int size;
+        public int Size { get; set; }
 
-        public override int Width
-        {
-            get => size;
-            set { size = value; base.Width = size; base.Height = size; }
-        }
-
-        public override int Height
-        {
-            get => size;
-            set { size = value; base.Width = size; base.Height = size; }
-        }
+        public int Area() => Size * Size;
     }
 }

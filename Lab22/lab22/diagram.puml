@@ -1,0 +1,32 @@
+@startuml
+
+interface IShape {
+  Area() : int
+}
+
+class RectangleLSP {
+  Width : int
+  Height : int
+  Area() : int
+}
+
+class SquareLSP {
+  Size : int
+  Area() : int
+}
+
+RectangleLSP --|> IShape
+SquareLSP --|> IShape
+
+note right of RectangleLSP
+  ✅ Правильна модель LSP
+  Rectangle реалізує IShape
+end note
+
+note right of SquareLSP
+  ✅ Правильна модель LSP
+  Square реалізує IShape
+  (НЕ наслідує Rectangle)
+end note
+
+@enduml

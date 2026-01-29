@@ -1,10 +1,10 @@
 namespace lab22.Shapes
 {
-    // Базовий клас Rectangle
-    public class Rectangle
+    // Базовий клас Rectangle, який реалізує IShape
+    public class Rectangle : IShape
     {
-        public virtual int Width { get; set; }
-        public virtual int Height { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
         public int Area() => Width * Height;
     }
