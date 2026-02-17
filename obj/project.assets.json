@@ -13,11 +13,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Kristina\\Desktop\\Lab23\\lab23\\lab23.csproj",
       "projectName": "lab23",
       "projectPath": "C:\\Users\\Kristina\\Desktop\\Lab23\\lab23\\lab23.csproj",
       "packagesPath": "C:\\Users\\Kristina\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Kristina\\Desktop\\Lab23\\lab23\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Kristina\\Desktop\\lab 20\\lab20.csproj",
+      "projectName": "lab20",
+      "projectPath": "C:\\Users\\Kristina\\Desktop\\lab 20\\lab20.csproj",
+      "packagesPath": "C:\\Users\\Kristina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kristina\\Desktop\\lab 20\\obj\\",
+>>>>>>> 4551988f51c48701a0709e940a04f4e14774a586
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kristina\\AppData\\Roaming\\NuGet\\NuGet.Config",

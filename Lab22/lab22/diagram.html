@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>LSP - Liskov Substitution Principle</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        h2 { color: #666; margin-top: 30px; }
+        .mermaid { display: flex; justify-content: center; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LSP - Liskov Substitution Principle</h1>
+        
+        <h2>✅ Правильна реалізація (зараз)</h2>
+        <div class="mermaid">
+            graph TB
+                IShape["<<interface>><br/>IShape<br/>---<br/>Area(): int"]
+                
+                RectangleLSP["RectangleLSP<br/>---<br/>Width: int<br/>Height: int<br/>---<br/>Area(): int"]
+                SquareLSP["SquareLSP<br/>---<br/>Size: int<br/>---<br/>Area(): int"]
+                
+                RectangleLSP -->|implements| IShape
+                SquareLSP -->|implements| IShape
+                
+                style IShape fill:#e1f5ff
+                style RectangleLSP fill:#c8e6c9
+                style SquareLSP fill:#c8e6c9
+        </div>
+
+        <h2>❌ Помилкова реалізація (була раніше)</h2>
+        <div class="mermaid">
+            graph TB
+                IShape2["<<interface>><br/>IShape"]
+                Rectangle2["Rectangle<br/>---<br/>Width<br/>Height"]
+                Square2["Square<br/>---<br/>Size"]
+                
+                Rectangle2 -->|implements| IShape2
+                Square2 -->|inherits| Rectangle2
+                
+                style IShape2 fill:#ffe1e1
+                style Rectangle2 fill:#ffcccc
+                style Square2 fill:#ff9999
+        </div>
+
+        <h2>Пояснення</h2>
+        <p><span class="success">✅ Правильно:</span></p>
+        <ul>
+            <li>RectangleLSP реалізує IShape</li>
+            <li>SquareLSP реалізує IShape (НЕ наслідує Rectangle)</li>
+            <li>Обидві класи можна використовувати як IShape без проблем</li>
+        </ul>
+
+        <p><span class="error">❌ Помилково:</span></p>
+        <ul>
+            <li>Square успадковується від Rectangle</li>
+            <li>Square має інші властивості (Size замість Width/Height)</li>
+            <li>Це порушує контракт Rectangle і призводить до помилок</li>
+        </ul>
+    </div>
+</body>
+</html>
