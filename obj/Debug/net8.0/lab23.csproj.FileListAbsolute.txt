@@ -1,0 +1,14 @@
+C:\Users\Kristina\Desktop\Lab23\lab23\bin\Debug\net8.0\lab23.exe
+C:\Users\Kristina\Desktop\Lab23\lab23\bin\Debug\net8.0\lab23.deps.json
+C:\Users\Kristina\Desktop\Lab23\lab23\bin\Debug\net8.0\lab23.runtimeconfig.json
+C:\Users\Kristina\Desktop\Lab23\lab23\bin\Debug\net8.0\lab23.dll
+C:\Users\Kristina\Desktop\Lab23\lab23\bin\Debug\net8.0\lab23.pdb
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.AssemblyInfoInputs.cache
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.AssemblyInfo.cs
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.csproj.CoreCompileInputs.cache
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.dll
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\refint\lab23.dll
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.pdb
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\lab23.genruntimeconfig.cache
+C:\Users\Kristina\Desktop\Lab23\lab23\obj\Debug\net8.0\ref\lab23.dll
