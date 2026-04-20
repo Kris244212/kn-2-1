@@ -1,0 +1,20 @@
+@startuml
+
+class User {
+  id
+  username
+  email
+  password
+  role
+}
+
+class Booking {
+  id
+  user_id
+  date
+  table_number
+}
+
+User "1" -- "0..*" Booking
+
+@enduml

@@ -1,0 +1,24 @@
+<h2>Пошук поїздів</h2>
+
+<form method="POST" action="/search">
+    <label>Звідки:</label>
+    <select name="from_city" required>
+        <option value="">Оберіть місто</option>
+        {% for city in cities_from %}
+            <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Куди:</label>
+    <select name="to_city" required>
+        <option value="">Оберіть місто</option>
+        {% for city in cities_to %}
+            <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Дата:</label>
+    <input type="date" name="date" required>
+
+    <button type="submit">Пошук</button>
+</form>
